@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Library2
                                          MultiSubnetFailover = False";
             Library library = new Library(connection_string);
 
-            library.InsertAuthor("Abercrombie", "Joe");
+            library.InsertAuthor("Stanne", "Michel") ;
 
             library.SelectAuthors();
             library.SelectBooks();
