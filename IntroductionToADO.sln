@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDisconnected", "Libr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliceDB_321", "Police_DB321\PoliceDB_321.csproj", "{760DDAC6-28E0-44AA-B641-0A202D794C6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academy", "Academy\Academy.csproj", "{99C47CE0-3D54-4021-930D-C961C3DA6372}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{760DDAC6-28E0-44AA-B641-0A202D794C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{760DDAC6-28E0-44AA-B641-0A202D794C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{760DDAC6-28E0-44AA-B641-0A202D794C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C47CE0-3D54-4021-930D-C961C3DA6372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C47CE0-3D54-4021-930D-C961C3DA6372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C47CE0-3D54-4021-930D-C961C3DA6372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C47CE0-3D54-4021-930D-C961C3DA6372}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
