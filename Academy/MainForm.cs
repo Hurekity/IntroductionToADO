@@ -48,7 +48,7 @@ FROM Students
 JOIN Groups ON ([group]=group_id)
 JOIN Directions ON (direction=direction_id)
 ";
-            if (condition != null )
+            if (condition != null && !condition.Contains("Все"))
             {
                 cmd += $"WHERE {condition}";
             }
