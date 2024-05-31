@@ -38,32 +38,46 @@ namespace Academy
         }
         void LoadStudents(string condition=null )
         {
-            connection.Open();
-            string cmd = $@"SELECT 
+            //            connection.Open();
+            //            string cmd = $@"SELECT 
+            //         [Ф.И.О] = FORMATMESSAGE('%s %s %s', last_name, first_name, middle_name),
+            //         [Дата рождения] = birth_date,
+            //         [Группа] = group_name,
+            //         [Направление] = direction_name
+            //FROM Students
+            //JOIN Groups ON ([group]=group_id)
+            //JOIN Directions ON (direction=direction_id)
+            //";
+            //            if (condition != null && !condition.Contains("Все"))
+            //            {
+            //                cmd += $"WHERE {condition}";
+            //            }
+            //            SqlCommand  command = new SqlCommand(cmd, connection);
+            //            reader = command.ExecuteReader();
+            //            table = new DataTable();
+            //            for (int i = 0; i < reader.FieldCount; i++) table.Columns.Add(reader.GetName(i));       
+            //            while (reader.Read())
+            //            {
+            //                DataRow row = table.NewRow();
+            //                for (int i = 0; i < reader.FieldCount; i++) row[i] = reader[i];
+            //                table.Rows.Add(row);
+            //            }
+            //            dataGridViewStudents.DataSource = table;
+            //            connection.Close();
+
+            string columns = $@"SELECT 
          [Ф.И.О] = FORMATMESSAGE('%s %s %s', last_name, first_name, middle_name),
          [Дата рождения] = birth_date,
          [Группа] = group_name,
          [Направление] = direction_name
-FROM Students
-JOIN Groups ON ([group]=group_id)
-JOIN Directions ON (direction=direction_id)
+
 ";
-            if (condition != null && !condition.Contains("Все"))
-            {
-                cmd += $"WHERE {condition}";
-            }
-            SqlCommand  command = new SqlCommand(cmd, connection);
-            reader = command.ExecuteReader();
-            table = new DataTable();
-            for (int i = 0; i < reader.FieldCount; i++) table.Columns.Add(reader.GetName(i));       
-            while (reader.Read())
-            {
-                DataRow row = table.NewRow();
-                for (int i = 0; i < reader.FieldCount; i++) row[i] = reader[i];
-                table.Rows.Add(row);
-            }
-            dataGridViewStudents.DataSource = table;
-            connection.Close();
+            string tables = "students, groups, directions";
+            string relations = "Students.[group] = group_id AND direction = direction_id";
+            if (condition != null) condition = $"{relations} AND {condition}";
+            else condition = relations;
+            Connector connector = new Connector();
+            dataGridViewStudents.DataSource = connector.LoadColumnFromTable(columns, tables, relations + " AND " + condition);
         }
         void LoadDataToComboBox(string tables, string column, ComboBox list, string condition=null)
         {
@@ -135,6 +149,12 @@ static extern bool FreeConsole();
            
             LoadStudents($"direction_name = '{comboBoxStudentsDirection.SelectedItem.ToString()}'");
             SetStatus();
+        }
+
+        private void buttonAddStudent_Click(object sender, EventArgs e)
+        {
+            FormStudent formStudent = new FormStudent();
+            formStudent.ShowDialog();
         }
     }
 }
